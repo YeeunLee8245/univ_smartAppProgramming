@@ -1,26 +1,20 @@
-package kr.co.yeaeun.test_aidl
+package kr.co.yeaeun.myapplication
 
-import android.Manifest
-import android.content.pm.PackageManager
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import android.os.Bundle
+import android.view.View
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) !== PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                100
-            )
+        my_button.setOnClickListener{
+            my_text.text = "1"
         }
     }
+
+//    fun onButton(v: View){
+//        my_text.text = "눌렸습니다2"
+//    }
 }
