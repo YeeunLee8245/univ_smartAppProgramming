@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#080"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+   <TextView
+       android:id="@+id/textView"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_margin="16dp"
+       android:textColor="#fff"
+       android:gravity="center"
+       android:text="Good Luck!"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#080"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/card1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:background="#fff"
+            android:src="@drawable/c_2_of_clubs"/>
+        <ImageView
+            android:id="@+id/card2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:background="#fff"
+            android:src="@drawable/c_2_of_clubs"/>
+        <ImageView
+            android:id="@+id/card3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:background="#fff"
+            android:src="@drawable/c_2_of_clubs"/>
+        <ImageView
+            android:id="@+id/card4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:background="#fff"
+            android:src="@drawable/c_2_of_clubs"/>
+        <ImageView
+            android:id="@+id/card5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:background="#fff"
+            android:src="@drawable/c_2_of_clubs"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnDeal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카드 분배"/>
+
+
+</LinearLayout>
