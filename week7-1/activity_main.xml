@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+<!--        로그인 텍스트뷰가 화면에 보이려면 EditText뷰에 layout_weight 설정 => 로그인 텍스트 뷰만 남기고 나머지 자리 차지-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그인"/>
+    </LinearLayout>
+
+<!--    대소문자 반드시 구별-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="#ff0"
+        android:textColor="#00f"
+        android:text="안녕하세요"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:layout_weight="1"
+        android:background="#0f0"
+        android:textColor="#00f"
+        android:text="안녕하세요"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="#ff0"
+        android:textColor="#00f"
+        android:text="안녕하세요"/>
+
+
+
+</LinearLayout>
