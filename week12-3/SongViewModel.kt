@@ -8,6 +8,8 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import org.json.JSONArray
+import org.json.JSONObject
 
 class SongViewModel(application: Application) : AndroidViewModel(application) {
     companion object{
@@ -27,7 +29,7 @@ class SongViewModel(application: Application) : AndroidViewModel(application) {
         queue = Volley.newRequestQueue(application)
     }
 
-    fun getsSong(i: Int) = song[i]
+    fun getSong(i: Int) = song[i]
     fun getSize() = song.size
     override fun onCleared() {
         super.onCleared()
@@ -43,7 +45,10 @@ class SongViewModel(application: Application) : AndroidViewModel(application) {
                 null,
             // 성공했을 때
             {
-                Toast.makeText(getApplication(), it.toString(), Toast.LENGTH_LONG).show()
+//                Toast.makeText(getApplication(), it.toString(), Toast.LENGTH_LONG).show()
+                song.clear()
+                parseJson(it)
+                list.value = song
             },
             // 에러가 발생했을 때
             {
@@ -51,5 +56,16 @@ class SongViewModel(application: Application) : AndroidViewModel(application) {
             })
         request.tag = QUEUE_TAG
         queue.add(request) // 리퀘스트 요청 객체 넣어주기
+    }
+
+    private fun parseJson(items: JSONArray){
+        for (i in 0 until items.length()){
+            val item: JSONObject = items[i] as JSONObject
+            val id = item.getInt("id")
+            val title = item.getString("title")
+            val singer = item.getString("singer")
+
+            song.add(Song(id, title, singer))
+        }
     }
 }
