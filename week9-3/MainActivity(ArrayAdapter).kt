@@ -97,6 +97,7 @@ class MainActivity : AppCompatActivity() {
                 view = convertView
                 //tv = view.findViewById(android.R.id.text1)
                 // => 87라인과 95라인 중복 => 최적화 필요 => ViewHolder
+                // 다시 셋팅
                 viewHolder = view.tag as CatViewHolder
             }
 
