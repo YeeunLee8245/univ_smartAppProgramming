@@ -102,6 +102,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             //tv.text = getItem(position).model
+            // position: 리스트에서 보일 아이템의 위치 정보
+            // Adapter의 함수 getItem(position)으로 해당 위치의 view를 가져올 수 있다.
             viewHolder.txName.text = getItem(position)?.name
             viewHolder.txModel.text = getItem(position)?.model
             return view
