@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
 
         listView.setOnItemClickListener { _, _, position, _ ->
-            val uri = Uri.parse("\"http://www.youtube.com/results?search_query="
+            val uri = Uri.parse("http://www.youtube.com/results?search_query="
                 +"노래방 ${model.getSong(position)}")
             val intent = Intent(Intent.ACTION_VIEW,uri) // 암시적 intent
             startActivity(intent)
