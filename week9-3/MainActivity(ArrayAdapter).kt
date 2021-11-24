@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, mArray[position].model, Toast.LENGTH_SHORT).show()
 
             //val uri = Uri.parse("http://www.google.com/search?q=${mArray[i]}")
-            val uri = Uri.parse("http://www.youtube.com/results?search_query=cc${mArray[position]}")
+            val uri = Uri.parse("http://www.youtube.com/results?search_query=${mArray[position]}")
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
         } // interface funtion
