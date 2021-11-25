@@ -19,7 +19,7 @@ class ListViewModel:ViewModel {
         list.value = songs
     }
 
-//    fun getSong(i: Int):  Stirng{
+    //    fun getSong(i: Int):  Stirng{
 //        return songs[i]
 //    } 아래 축약형과 동일
     fun getSong(i: Int) = songs[i]
