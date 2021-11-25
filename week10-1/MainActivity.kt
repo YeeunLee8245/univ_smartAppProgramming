@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
-//    private val array = arrayOf("에스파 savage", "에스파 black mamba",
+    //    private val array = arrayOf("에스파 savage", "에스파 black mamba",
 //        "에스파 savage", "에스파 black mamba",
 //        "에스파 savage", "에스파 black mamba",
 //        "에스파 savage", "에스파 black mamba",
@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
 //        "에스파 savage", "에스파 black mamba",
 //        "에스파 savage", "에스파 black mamba",
 //        "에스파 savage", "에스파 black mamba")
+
+    // 한 요소의 타입은 String
     private lateinit var adapter:ArrayAdapter<String>
 
     private lateinit var model: ListViewModel
@@ -43,6 +45,8 @@ class MainActivity : AppCompatActivity() {
         // 교수님과 버전이 상이하여 구글링으로 수정한 코드
         model = ViewModelProvider(this).get(ListViewModel::class.java)
 
+        // 데이터가 체인지 될 때마다 호출됨
+        // 이게 큐처럼 동작되는듯
         val listObserver = Observer<ArrayList<String>>{
             // 데이터가 달라지면 자동으로 리스트를 바꿔라
             adapter.notifyDataSetChanged()
@@ -53,19 +57,21 @@ class MainActivity : AppCompatActivity() {
             android.R.layout.simple_list_item_1,
             model.list.value as List<String>)
 
+        // content.xml에 있지만 activity_main.xml와 연계하여 가져올 수 있음
         listView.adapter = adapter
 
 
         listView.setOnItemClickListener { _, _, position, _ ->
             val uri = Uri.parse("http://www.youtube.com/results?search_query="
-                +"노래방 ${model.getSong(position)}")
+                    +"노래방 ${model.getSong(position)}")
             val intent = Intent(Intent.ACTION_VIEW,uri) // 암시적 intent
             startActivity(intent)
         }
 
         fab.setOnClickListener { view ->
-            // OnCreate에서 만들어지는 것이 아니기 때문에 inflater를 사용하여 따로 만들어주어야 함
+            // OnCreate에서 dialog_input.xml의 view가 만들어지는 것이 아니기 때문에 inflater를 사용하여 따로 만들어주어야 함
             val customLayout  = layoutInflater.inflate(R.layout.dialog_input, null)
+            // 작은 창으로 표시
             AlertDialog.Builder(this).setView(customLayout)
                 .setPositiveButton("추가"){ _,_ ->
                     // inputEditText는 EditText를 상속받은 것이기 때문에 타입에 저렇게 써줘도 됨
