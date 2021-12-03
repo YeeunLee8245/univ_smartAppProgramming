@@ -11,13 +11,8 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import androidx.activity.viewModels
-import kr.co.yeaeun.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(){
-    private lateinit var binding: ActivityMainBinding
-    private val model: GunplaViewModel by viewModels() // viewModels: 결국엔 내부에 있는 viewModelProvider을 그대로 씀
-    private lateinit var adapter: GunplaAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +41,9 @@ class MainActivity : AppCompatActivity(){
         constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
         constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int)
                 : super(context, attrs, defStyleAttr) {
-            p.setARGB(255, 255, 255, 255)
+            p.setARGB(255, 255, 255, 255) // 하얀색
             p.textSize = 50F
-            back.setARGB(255, 0, 128, 0)
+            back.setARGB(255, 0, 128, 0) // 초록색
 
             bmpWidth = bmpBack.width
             bmpHeight = bmpBack.height
@@ -149,7 +144,7 @@ class MainActivity : AppCompatActivity(){
         }
 
         // 터치시에 작동동
-       override fun onTouchEvent(event: MotionEvent): Boolean {
+        override fun onTouchEvent(event: MotionEvent): Boolean {
             // 터치를 했을 시
             if (event.action == MotionEvent.ACTION_DOWN){
                 dealCards()
