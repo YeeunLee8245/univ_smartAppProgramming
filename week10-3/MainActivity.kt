@@ -1,11 +1,11 @@
-package com.example.mystring
+package kr.co.yeaeun.myapplication
 
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import com.example.mystring.databinding.ActivityMainBinding
+import kr.co.yeaeun.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,12 +24,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(view.root)
 
         view.list.adapter = ArrayAdapter<String>(this,
-        android.R.layout.simple_list_item_1,
-        songs)
+            android.R.layout.simple_list_item_1,
+            songs) // 리스트에 출력하고싶은 array 변수 삽입
 
+        // 메소드 이름 주의! setOnItemClickListener임!!
         view.list.setOnItemClickListener { _, _, i, _ ->
             val uri = Uri.parse("http://youtube.com/results?search_query="
-            +songs[i])
+                    +songs[i])
+            // 암시적 intent에 띄울 uri
             val youtube = Intent(Intent.ACTION_VIEW,uri)
             startActivity(youtube)
         }
