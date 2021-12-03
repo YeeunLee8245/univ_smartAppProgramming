@@ -9,11 +9,12 @@ import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.Volley
 
 class VolleySingleton(context: Context) {
-    companion object {
+    companion object { // 내부에서 정의된 함수는 오버라이드 불가, 생성자가 다수일 때 어떤 생성자를 선택할지 도움이 됨
+        // 본 클래스를 싱글톤으로 만들 때 사용
         @Volatile
         private var INSTANCE: VolleySingleton? = null
         fun getInstance(context: Context) =
-            INSTANCE ?: synchronized(this) {
+            INSTANCE ?: synchronized(this) {    // INSTANCE가 null이라면 ?: 뒤의 값 삽입
                 INSTANCE ?: VolleySingleton(context).also {
                     INSTANCE = it
                 }
