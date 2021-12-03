@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         view.list.apply {
             layoutManager = LinearLayoutManager(applicationContext)
-            setHasFixedSize(true)
-            itemAnimator = DefaultItemAnimator() // 중요X
+            setHasFixedSize(true)   // RecyclerView는 고정된 사이즈를 가진다(아이템이 추가되거나 삭제되지 않음)
+            itemAnimator = DefaultItemAnimator() // 중요X(아이템 추가, 삭제, 이동 시 기본적으로 동작하는 애니메이션)
             adapter = mAdapter
 
         }
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             // 텀플젝에서는 레이아웃도 내가 직접 정의
             val view = layoutInflater.inflate(android.R.layout.simple_list_item_2, parent, false)
-            return ViewHolder(view) // ViewHolder에 view 셋팅
+            return ViewHolder(view) // view 셋팅한 ViewHolder 생성
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
