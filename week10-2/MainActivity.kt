@@ -19,10 +19,6 @@ class MainActivity : AppCompatActivity(){
     private lateinit var model: ListViewModel
     private val songAdapter = SongAdapter()
 
-    val mArray = arrayOf("정류진", "신해범", "기우희", "진치우" ,"성재경", "권세혁", "신예나",
-        "정류진", "신해범", "기우희", "진치우" ,"성재경", "권세혁", "신예나",
-        "정류진", "신해범", "기우희", "진치우" ,"성재경", "권세혁", "신예나")
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // TODO: 삭제할 것
@@ -45,16 +41,20 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
+    // SongAdapter의 내부 클래스인 ViewHolder를 요소로 갖는 RecyclerView Adapter(adapter의 layout) 상속
     inner class SongAdapter: RecyclerView.Adapter<SongAdapter.ViewHolder>(){
+        // ViewHolder 클래스 정의: ViewHolder로 쓸 것이기 때문에 RecyclerView.ViewHolder 상속
         inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
             val txSong: TextView = itemView.findViewById(android.R.id.text1) // simple item 1으로 설정했기 때문
         }
 
+        // ViewHolder 객체 첫 생성시
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongAdapter.ViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(android.R.layout.simple_list_item_1,
-                parent,
-                false)// 부모는 recycler, 따로 붙일 것
+                    parent,
+                    false)// 부모는 recycler, 따로 붙일 것
+            // ViewHolder 생성
             return ViewHolder(view)
         }
 
