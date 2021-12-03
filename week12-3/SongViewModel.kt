@@ -16,7 +16,7 @@ class SongViewModel(application: Application) : AndroidViewModel(application) {
         const val QUEUE_TAG = "SongVolleyRequest"
     }
 
-    // kotlin의 class는 c++의 struct다.
+    // kotlin의 data class는 c++의 struct다.
     data class Song(var id: Int, var title: String, var singer: String)
     // 바인딩을 통해 데이터가 바뀌면 화면도 수정됨
     val list = MutableLiveData<ArrayList<Song>>()
@@ -26,7 +26,7 @@ class SongViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         list.value = song // 변수를 초기화하면서 삽입
-        queue = Volley.newRequestQueue(application)
+        queue = Volley.newRequestQueue(application) // requestQueue 생성
     }
 
     fun getSong(i: Int) = song[i]
@@ -37,17 +37,17 @@ class SongViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun requestSong() {
-        val url = "https://expresssongdb-ebrbw.run.goorm.io/"
+        val url = "https://expresssongdb-ebrbw.run.goorm.io"
         // json Array 받아오기
         val request = JsonArrayRequest(
-                Request.Method.GET,
-                url,
-                null,
+            Request.Method.GET,
+            url,
+            null,
             // 성공했을 때
             {
 //                Toast.makeText(getApplication(), it.toString(), Toast.LENGTH_LONG).show()
                 song.clear()
-                parseJson(it)
+                parseJson(it) // it <= JSONArray
                 list.value = song
             },
             // 에러가 발생했을 때
@@ -59,6 +59,7 @@ class SongViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun parseJson(items: JSONArray){
+        // 한 튜플씩 처리
         for (i in 0 until items.length()){
             val item: JSONObject = items[i] as JSONObject
             val id = item.getInt("id")
